@@ -52,6 +52,27 @@ kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic demotopic1 -
 docker-compose stop
 
 ----
+Multi node kafka
+---------
+# Stop all running producers & consumers
+# multinode kafka deployment using docker-compose, exit to host machine if you are inside the container
+exit
+cd Documents\singlenodekafka
+docker-compose stop
+cd ..
+cd multinodekafka
+dir
+docker-compose up -d
+docker-compose ps
+# one zookeeper & 3 kafka containers should be listed
+# wait for a minute
+docker-compose up -d
+# if the kafka brokers have failed to start, this above command will start them again
+docker-compose ps
+# all the 3 brokers should be in up state, not is exited state
+
+
+------------
 #Stop all the prodcuer and consumer from previous exercise
 # connect to the container from another terminal
 # docker exec -it singlenodekafka_kafka_1 bash
